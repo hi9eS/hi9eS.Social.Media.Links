@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>hi9eS Social Links</title>
 
 <script>
@@ -11,43 +11,57 @@ const LINKS = [
     name: "Steam",
     url: "https://steamcommunity.com/id/hi9eS/",
     icon: "🎮",
-    status: "active"
+    status: "active",
+    size: "normal"
   },
   {
     name: "Discord",
     url: "https://discord.com/users/hi9ess",
     icon: "💬",
-    status: "active"
+    status: "active",
+    size: "normal"
+  },
+  {
+    name: "GameBume Discord Channel",
+    url: "https://discord.gg/jJGAmFVHGu",
+    icon: "💬",
+    status: "active",
+    size: "small"
   },
   {
     name: "Rockstar Games",
     url: "https://socialclub.rockstargames.com/member/hi9eSs/games",
     icon: "🎮",
-    status: "active"
+    status: "active",
+    size: "normal"
   },
   {
     name: "YouTube",
     url: "https://www.youtube.com/@hi9eS",
     icon: "▶️",
-    status: "active"
+    status: "active",
+    size: "normal"
   },
   {
     name: "Roblox",
     url: "https://www.roblox.com/users/4238017294/profile",
     icon: "🎮",
-    status: "active"
+    status: "active",
+    size: "normal"
   },
   {
     name: "X (Twitter)",
     url: "https://x.com/hi9ess",
     icon: "✖️",
-    status: "active"
+    status: "active",
+    size: "normal"
   },
   {
     name: "Reddit",
     url: null,
     icon: "👽",
-    status: "soon"
+    status: "soon",
+    size: "normal"
   }
 ];
 </script>
@@ -103,11 +117,11 @@ body {
 /* Link cards */
 .links { display: flex; flex-direction: column; gap: 14px; }
 
+/* Стандартная плашка */
 .link-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 20px; /* вертикально компактнее */
   border-radius: var(--radius);
   background: var(--card);
   backdrop-filter: var(--blur);
@@ -118,18 +132,24 @@ body {
   color: var(--text);
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
+.link-card.normal { padding: 14px 20px; }
+.link-card.small { padding: 10px 16px; font-size: 14px; }
+.link-card.large { padding: 18px 24px; font-size: 18px; }
+
 .link-card:hover { background: var(--card-hover); transform: translateY(-2px); }
 .link-card.disabled { cursor: not-allowed; opacity: 0.6; }
 
-.icon {
-  font-size: 28px;
-  width: 36px;
-  text-align: center;
-}
+.icon.normal { font-size: 28px; width: 36px; text-align: center; }
+.icon.small { font-size: 22px; width: 28px; text-align: center; }
+.icon.large { font-size: 32px; width: 40px; text-align: center; }
 
-.link-info { display: flex; flex-direction: column; gap: 2px; }
-.link-info span.title { font-size: 17px; font-weight: 500; }
-.link-info span.subtitle { font-size: 13px; color: var(--muted); }
+.link-info span.title.normal { font-size: 17px; font-weight: 500; }
+.link-info span.title.small { font-size: 14px; font-weight: 500; }
+.link-info span.title.large { font-size: 20px; font-weight: 500; }
+
+.link-info span.subtitle.normal { font-size: 13px; color: var(--muted); }
+.link-info span.subtitle.small { font-size: 11px; color: var(--muted); }
+.link-info span.subtitle.large { font-size: 15px; color: var(--muted); }
 
 /* Footer */
 .footer {
@@ -164,17 +184,18 @@ body {
 const container = document.getElementById('links');
 LINKS.forEach(link => {
   const card = document.createElement(link.url ? 'a' : 'div');
-  card.className = 'link-card' + (link.status !== 'active' ? ' disabled' : '');
+  const sizeClass = link.size || 'normal';
+  card.className = 'link-card ' + (link.status !== 'active' ? 'disabled ' : '') + sizeClass;
   if (link.url) {
     card.href = link.url;
     card.target = '_blank';
     card.rel = 'noopener noreferrer';
   }
   card.innerHTML = `
-    <div class="icon">${link.icon}</div>
+    <div class="icon ${sizeClass}">${link.icon}</div>
     <div class="link-info">
-      <span class="title">${link.name}</span>
-      <span class="subtitle">${link.status === 'active' ? link.url : 'Coming Soon'}</span>
+      <span class="title ${sizeClass}">${link.name}</span>
+      <span class="subtitle ${sizeClass}">${link.status === 'active' ? link.url : 'Coming Soon'}</span>
     </div>
   `;
   container.appendChild(card);
