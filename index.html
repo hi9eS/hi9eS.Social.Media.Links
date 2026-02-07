@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>hi9eS — Links</title>
+
+  <!-- =====================
+       CONFIG / TEMPLATE AREA
+       Меняешь здесь — меняется весь сайт
+       ===================== -->
+  <script>
+    const LINKS = [
+      {
+        name: "Steam",
+        url: "https://steamcommunity.com/id/hi9eS/",
+        icon: "🎮",
+        status: "active"
+      },
+      {
+        name: "Discord",
+        url: "https://discord.com/users/hi9ess",
+        icon: "💬",
+        status: "active"
+      },
+      {
+        name: "X (Twitter)",
+        url: "https://x.com/hi9ess",
+        icon: "✖️",
+        status: "active"
+      },
+      {
+        name: "Reddit",
+        url: null,
+        icon: "👽",
+        status: "soon"
+      },
+      {
+        name: "YouTube",
+        url: "https://www.youtube.com/@hi9eS",
+        icon: "▶️",
+        status: "active"
+      }
+    ];
+  </script>
+
+  <style>
+    :root {
+      --bg: #0b0e14;
+      --card: rgba(255,255,255,0.08);
+      --card-hover: rgba(255,255,255,0.14);
+      --text: #e6e6eb;
+      --muted: #9aa0b3;
+      --accent: #4f8cff;
+      --radius: 18px;
+      --blur: blur(14px);
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #11162a, #07090f 60%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 16px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .header {
+      background: var(--card);
+      backdrop-filter: var(--blur);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .header h1 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .header p {
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .meta {
+      display: flex;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      backdrop-filter: var(--blur);
+      border: 1px solid rgba(255,255,255,0.10);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .link-card:hover {
+      background: var(--card-hover);
+      transform: translateY(-2px);
+    }
+
+    .link-card.disabled {
+      cursor: not-allowed;
+      opacity: 0.55;
+    }
+
+    .icon {
+      font-size: 26px;
+      width: 34px;
+      text-align: center;
+    }
+
+    .link-info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .link-info span.title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .link-info span.subtitle {
+      font-size: 13px;
+      color: var(--muted);
+      word-break: break-all;
+    }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Верхнее предупреждение / инфо -->
+    <div class="header">
+      <h1>hi9eS — Social Links</h1>
+      <p>Официальные и проверенные ссылки. Фейковые аккаунты и клоны — игнорировать.</p>
+      
+    </div>
+
+    <!-- Ссылки -->
+    <div class="links" id="links"></div>
+
+    <div class="footer">
+      © hi9eS · GitHub Pages · Latest update: 07.02.2026
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('links');
+
+    LINKS.forEach(link => {
+      const card = document.createElement(link.url ? 'a' : 'div');
+      card.className = 'link-card' + (link.status !== 'active' ? ' disabled' : '');
+
+      if (link.url) {
+        card.href = link.url;
+        card.target = '_blank';
+        card.rel = 'noopener noreferrer';
+      }
+
+      card.innerHTML = `
+        <div class="icon">${link.icon}</div>
+        <div class="link-info">
+          <span class="title">${link.name}</span>
+          <span class="subtitle">${link.status === 'active' ? link.url : 'Coming Soon'}</span>
+        </div>
+      `;
+
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
