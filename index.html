@@ -111,27 +111,28 @@ body {
 .header p { margin: 0; font-size: 14px; color: var(--muted); }
 
 /* Link cards */
-.links { display: flex; flex-direction: column; gap: 12px; }
+.links { display: flex; flex-direction: column; gap: 16px; }
 
 .link-card {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   border-radius: var(--radius);
   background: var(--card);
   backdrop-filter: var(--blur);
   border: 1px solid rgba(255,255,255,0.08);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-decoration: none;
   color: var(--text);
-  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
 /* Размеры плашек */
-.link-card.normal { padding: 14px 20px; font-size: 19px; }
-.link-card.small { padding: 12px 18px; font-size: 16px; }
-.link-card.large { padding: 18px 24px; font-size: 22px; }
+.link-card.normal { padding: 16px 24px; font-size: 19px; }
+.link-card.small { padding: 14px 20px; font-size: 16px; }
+.link-card.large { padding: 20px 28px; font-size: 22px; }
 
 .link-card:hover { background: var(--card-hover); transform: translateY(-2px); }
 .link-card.disabled { cursor: not-allowed; opacity: 0.6; }
@@ -140,10 +141,26 @@ body {
 .icon.small { font-size: 22px; width: 28px; text-align: center; line-height: 1; }
 .icon.large { font-size: 32px; width: 40px; text-align: center; line-height: 1; }
 
-.link-info { display: flex; align-items: center; }
+.link-info { display: flex; align-items: center; flex: 1; }
 .link-info span.title.normal { font-size: 17px; font-weight: 500; line-height: 1; }
 .link-info span.title.small { font-size: 14px; font-weight: 500; line-height: 1; }
 .link-info span.title.large { font-size: 20px; font-weight: 500; line-height: 1; }
+
+/* Появление ссылки при наведении */
+.link-card .link-url {
+  position: absolute;
+  bottom: 8px;
+  right: 12px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+.link-card:hover .link-url {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* Footer */
 .footer { margin-top: 28px; text-align: center; font-size: 12px; color: var(--muted); opacity: 0.8; }
@@ -175,11 +192,16 @@ LINKS.forEach(link => {
     card.target = '_blank';
     card.rel = 'noopener noreferrer';
   }
+
+  // Берем чистую ссылку без https://
+  let displayUrl = link.url ? link.url.replace(/^https?:\/\//, '') : '';
+
   card.innerHTML = `
     <div class="icon ${sizeClass}">${link.icon}</div>
     <div class="link-info">
       <span class="title ${sizeClass}">${link.name}</span>
     </div>
+    ${displayUrl ? `<span class="link-url">${displayUrl}</span>` : ''}
   `;
   container.appendChild(card);
 });
