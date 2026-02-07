@@ -77,11 +77,10 @@ const LINKS = [
   --accent: #4f8cff;
   --radius: 16px;
   --blur: blur(14px);
-  --liquid-speed: 6s;
 }
 
+/* Общие стили */
 * { box-sizing: border-box; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif; }
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -92,7 +91,6 @@ body {
   align-items: flex-start;
   padding: 40px 16px;
 }
-
 .container { width: 100%; max-width: 520px; }
 
 /* Header с Liquid Glass */
@@ -100,83 +98,52 @@ body {
   background: var(--header-bg);
   backdrop-filter: var(--blur);
   border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 28px;
+  padding: 22px;
+  margin-bottom: 24px;
   border: 1px solid rgba(255,255,255,0.08);
   transition: box-shadow 0.3s ease, background 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-.header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.12), rgba(255,255,255,0.05));
-  filter: blur(20px);
-  transform: rotate(0deg);
-  transition: all 0.6s ease;
-}
-.header:hover::before {
-  transform: rotate(30deg) translateX(5%) translateY(5%);
 }
 .header:hover {
   background: rgba(255,255,255,0.1);
-  box-shadow: 0 10px 35px rgba(255,255,255,0.12);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.1);
 }
 .header h1 { margin: 0 0 8px; font-size: 24px; font-weight: 600; letter-spacing: 0.2px; }
 .header p { margin: 0; font-size: 14px; color: var(--muted); }
 
-/* Links */
-.links { display: flex; flex-direction: column; gap: 14px; }
+/* Link cards */
+.links { display: flex; flex-direction: column; gap: 12px; }
 
 .link-card {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
+  gap: 14px;
   border-radius: var(--radius);
   background: var(--card);
   backdrop-filter: var(--blur);
   border: 1px solid rgba(255,255,255,0.08);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   color: var(--text);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-  padding: 16px 24px; /* чуть больше */
-  position: relative;
-  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
-.link-card:hover {
-  background: rgba(255,255,255,0.12);
-  transform: translateY(-2px);
-}
+
+/* Размеры плашек */
+.link-card.normal { padding: 12px 18px; font-size: 17px; }
+.link-card.small { padding: 10px 16px; font-size: 14px; }
+.link-card.large { padding: 16px 22px; font-size: 20px; }
+
+.link-card:hover { background: var(--card-hover); transform: translateY(-2px); }
 .link-card.disabled { cursor: not-allowed; opacity: 0.6; }
 
-/* Liquid Glass на всех плашках */
-.link-card::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.03), rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-  filter: blur(12px);
-  transform: rotate(0deg);
-  transition: all var(--liquid-speed) linear;
-  pointer-events: none;
-}
-.link-card:hover::before {
-  transform: rotate(45deg) translateX(5%) translateY(5%);
-}
+.icon.normal { font-size: 28px; width: 36px; text-align: center; line-height: 1; }
+.icon.small { font-size: 22px; width: 28px; text-align: center; line-height: 1; }
+.icon.large { font-size: 32px; width: 40px; text-align: center; line-height: 1; }
 
-.icon { font-size: 28px; width: 36px; text-align: center; }
-.link-info { display: flex; flex-direction: column; justify-content: center; }
-.link-info span.title { font-size: 17px; font-weight: 500; }
+.link-info { display: flex; align-items: center; }
+.link-info span.title.normal { font-size: 17px; font-weight: 500; line-height: 1; }
+.link-info span.title.small { font-size: 14px; font-weight: 500; line-height: 1; }
+.link-info span.title.large { font-size: 20px; font-weight: 500; line-height: 1; }
 
 /* Footer */
 .footer { margin-top: 28px; text-align: center; font-size: 12px; color: var(--muted); opacity: 0.8; }
@@ -185,7 +152,6 @@ body {
 <body>
 
 <div class="container">
-
   <div class="header">
     <h1>hi9eS - Social Links</h1>
     <p>Official and verified links. Click on a card to visit the site.</p>
@@ -194,25 +160,25 @@ body {
   <div class="links" id="links"></div>
 
   <div class="footer">
-    © OXeall & hi9eS • Founded by hi9eS • Latest update: 07.02.2026.
+    © OXeall & hi9eS • Founded by hi9eS • Latest update: 07.02.2026. 
   </div>
-
 </div>
 
 <script>
 const container = document.getElementById('links');
 LINKS.forEach(link => {
   const card = document.createElement(link.url ? 'a' : 'div');
-  card.className = 'link-card ' + (link.status !== 'active' ? 'disabled' : '');
+  const sizeClass = link.size || 'normal';
+  card.className = 'link-card ' + (link.status !== 'active' ? 'disabled ' : '') + sizeClass;
   if (link.url) {
     card.href = link.url;
     card.target = '_blank';
     card.rel = 'noopener noreferrer';
   }
   card.innerHTML = `
-    <div class="icon">${link.icon}</div>
+    <div class="icon ${sizeClass}">${link.icon}</div>
     <div class="link-info">
-      <span class="title">${link.name}</span>
+      <span class="title ${sizeClass}">${link.name}</span>
     </div>
   `;
   container.appendChild(card);
