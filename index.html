@@ -122,10 +122,30 @@ body {
   backdrop-filter: var(--blur);
   border: 1px solid rgba(255,255,255,0.08);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
   text-decoration: none;
   color: var(--text);
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Анимация Liquid Glass при наведении */
+.link-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 50%);
+  transform: translate(0,0);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+  border-radius: var(--radius);
+}
+.link-card:hover::before {
+  transform: translate(10%, 10%);
 }
 
 /* Размеры плашек */
