@@ -60,7 +60,7 @@ const LINKS = [
   --text: #e6e6eb;
   --muted: #9aa0b3;
   --accent: #4f8cff;
-  --radius: 18px;
+  --radius: 16px;
   --blur: blur(14px);
 }
 
@@ -74,50 +74,40 @@ body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 50px 16px;
+  padding: 40px 16px;
 }
 
-.container { width: 100%; max-width: 540px; }
+.container { width: 100%; max-width: 520px; }
 
 /* Header */
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: var(--card);
   backdrop-filter: var(--blur);
   border-radius: var(--radius);
-  padding: 28px 24px;
-  margin-bottom: 28px;
+  padding: 22px;
+  margin-bottom: 24px;
   border: 1px solid rgba(255,255,255,0.08);
 }
-
-.header .title h1 {
-  margin: 0 0 6px;
-  font-size: 28px;
+.header h1 {
+  margin: 0 0 8px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: 0.2px;
 }
-.header .title p {
+.header p {
   margin: 0;
-  font-size: 15px;
+  font-size: 14px;
   color: var(--muted);
 }
 
-.header .info {
-  font-size: 13px;
-  color: rgba(255,255,255,0.5);
-  text-align: right;
-}
-
 /* Link cards */
-.links { display: flex; flex-direction: column; gap: 11px; }
+.links { display: flex; flex-direction: column; gap: 14px; }
 
 .link-card {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 24px;
+  gap: 14px;
+  padding: 14px 20px; /* вертикально компактнее */
   border-radius: var(--radius);
   background: var(--card);
   backdrop-filter: var(--blur);
@@ -126,26 +116,26 @@ body {
   transition: all 0.2s ease;
   text-decoration: none;
   color: var(--text);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 .link-card:hover { background: var(--card-hover); transform: translateY(-2px); }
 .link-card.disabled { cursor: not-allowed; opacity: 0.6; }
 
 .icon {
-  font-size: 30px;
-  width: 38px;
+  font-size: 28px;
+  width: 36px;
   text-align: center;
 }
 
 .link-info { display: flex; flex-direction: column; gap: 2px; }
-.link-info span.title { font-size: 18px; font-weight: 500; }
-.link-info span.subtitle { font-size: 14px; color: var(--muted); }
+.link-info span.title { font-size: 17px; font-weight: 500; }
+.link-info span.subtitle { font-size: 13px; color: var(--muted); }
 
 /* Footer */
 .footer {
-  margin-top: 32px;
+  margin-top: 28px;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--muted);
   opacity: 0.8;
 }
@@ -157,13 +147,8 @@ body {
 
   <!-- Верхнее предупреждение / инфо -->
   <div class="header">
-    <div class="title">
-      <h1>hi9eS - Social Links</h1>
-      <p>Official and verified links. Ignore fake accounts and clones.</p>
-    </div>
-    <div class="info">
-      Click on a card to open the link
-    </div>
+    <h1>hi9eS - Social Links</h1>
+    <p>Official and verified links. Ignore fake accounts and clones.</p>
   </div>
 
   <!-- Ссылки -->
