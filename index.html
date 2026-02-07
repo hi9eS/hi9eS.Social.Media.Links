@@ -36,6 +36,13 @@ const LINKS = [
     size: "normal"
   },
   {
+    name: "Twitch",
+    url: "https://www.twitch.tv/hi9ess",
+    icon: "🎥",
+    status: "active",
+    size: "normal"
+  },
+  {
     name: "YouTube",
     url: "https://www.youtube.com/@hi9eS",
     icon: "🎬",
@@ -138,8 +145,8 @@ body {
 .link-card.disabled { cursor: not-allowed; opacity: 0.6; }
 
 .icon.normal { font-size: 28px; width: 36px; text-align: center; line-height: 1; }
-.icon.small { font-size: 22px; width: 28px; text-align: center; line-height: 1; }
-.icon.large { font-size: 32px; width: 40px; text-align: center; line-height: 1; }
+.icon.small { font-size:22px; width:28px; text-align:center; line-height:1; }
+.icon.large { font-size:32px; width:40px; text-align:center; line-height:1; }
 
 .link-info { display: flex; align-items: center; flex: 1; }
 .link-info span.title.normal { font-size: 16px; font-weight: 500; line-height: 1; }
@@ -193,7 +200,7 @@ LINKS.forEach(link => {
     card.rel = 'noopener noreferrer';
   }
 
-  // Берем чистую ссылку без https://
+  // Чистая ссылка без https://
   let displayUrl = link.url ? link.url.replace(/^https?:\/\//, '') : '';
 
   card.innerHTML = `
