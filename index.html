@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Social Media Links - hi9eS</title>
+  <title>hi9eS Social Links</title>
 
   <!-- =====================
        CONFIG / TEMPLATE AREA
@@ -64,7 +64,7 @@
       --text: #e6e6eb;
       --muted: #9aa0b3;
       --accent: #4f8cff;
-      --radius: 18px;
+      --radius: 16px;
       --blur: blur(14px);
     }
 
@@ -81,58 +81,53 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      padding: 48px 16px;
+      padding: 40px 16px;
     }
 
     .container {
       width: 100%;
-      max-width: 560px;
+      max-width: 520px;
     }
 
+    /* Header */
     .header {
       background: var(--card);
       backdrop-filter: var(--blur);
       border-radius: var(--radius);
-      padding: 22px 24px;
-      margin-bottom: 28px;
+      padding: 20px;
+      margin-bottom: 24px;
       border: 1px solid rgba(255,255,255,0.08);
     }
 
     .header h1 {
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       font-size: 22px;
       font-weight: 600;
+      letter-spacing: 0.2px;
     }
 
     .header p {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: 14px;
       color: var(--muted);
     }
 
-    .meta {
-      display: flex;
-      gap: 14px;
-      font-size: 12px;
-      color: var(--muted);
-      opacity: 0.8;
-    }
-
+    /* Link cards */
     .links {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 14px;
     }
 
     .link-card {
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 20px 22px;
+      gap: 14px;
+      padding: 16px 18px;
       border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      background: var(--card);
       backdrop-filter: var(--blur);
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.08);
       cursor: pointer;
       transition: all 0.2s ease;
       text-decoration: none;
@@ -146,19 +141,19 @@
 
     .link-card.disabled {
       cursor: not-allowed;
-      opacity: 0.55;
+      opacity: 0.6;
     }
 
     .icon {
-      font-size: 26px;
-      width: 34px;
+      font-size: 24px;
+      width: 32px;
       text-align: center;
     }
 
     .link-info {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 2px;
     }
 
     .link-info span.title {
@@ -169,15 +164,15 @@
     .link-info span.subtitle {
       font-size: 13px;
       color: var(--muted);
-      word-break: break-all;
     }
 
+    /* Footer */
     .footer {
-      margin-top: 32px;
+      margin-top: 28px;
       text-align: center;
       font-size: 12px;
       color: var(--muted);
-      opacity: 0.6;
+      opacity: 0.7;
     }
   </style>
 </head>
@@ -186,16 +181,15 @@
 
     <!-- Верхнее предупреждение / инфо -->
     <div class="header">
-      <h1>Social Links - hi9eS</h1>
+      <h1>hi9eS - Social Links</h1>
       <p>Official and verified links. Ignore fake accounts and clones.</p>
-      
     </div>
 
     <!-- Ссылки -->
     <div class="links" id="links"></div>
 
     <div class="footer">
-      © OXeall & hi9eS · Official Links · Latest update: 07.02.2026
+      © OXeall & hi9eS • Created by OXeall • Latest update: 07d.02m.2026y.
     </div>
   </div>
 
