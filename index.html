@@ -10,56 +10,56 @@ const LINKS = [
   {
     name: "Steam",
     url: "https://steamcommunity.com/id/hi9eS/",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
-    name: "Discord (@hi9ess)",
+    name: "Discord",
     url: "https://discord.com/users/hi9ess",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
     name: "GameBume Discord Channel",
     url: "https://discord.gg/jJGAmFVHGu",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "small"
   },
   {
     name: "Rockstar Games",
     url: "https://socialclub.rockstargames.com/member/hi9eSs/games",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
     name: "YouTube",
     url: "https://www.youtube.com/@hi9eS",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
     name: "Roblox",
     url: "https://www.roblox.com/users/4238017294/profile",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
     name: "X (Twitter)",
     url: "https://x.com/hi9ess",
-    icon: " ",
+    icon: "🔗",
     status: "active",
     size: "normal"
   },
   {
     name: "Reddit",
     url: null,
-    icon: " ",
+    icon: "🔗",
     status: "soon",
     size: "normal"
   }
@@ -122,30 +122,10 @@ body {
   backdrop-filter: var(--blur);
   border: 1px solid rgba(255,255,255,0.08);
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   text-decoration: none;
   color: var(--text);
   box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Анимация Liquid Glass при наведении */
-.link-card::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.05), transparent 50%);
-  transform: translate(0,0);
-  transition: transform 0.7s ease;
-  pointer-events: none;
-  border-radius: var(--radius);
-}
-.link-card:hover::before {
-  transform: translate(10%, 10%);
 }
 
 /* Размеры плашек */
@@ -207,3 +187,4 @@ LINKS.forEach(link => {
 
 </body>
 </html>
+
